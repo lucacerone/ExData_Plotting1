@@ -1,5 +1,7 @@
 if (!exists("household")) source("import_data.R")
 
+png(filename = "plot4.png", width = 480, height = 480)
+
 par(mfrow=c(2,2))
 
 plot(household$DateTime, household$Global_active_power,
@@ -13,11 +15,14 @@ plot(household$DateTime, household$Sub_metering_1,
 lines(household$DateTime, household$Sub_metering_2, col = "red")
 lines(household$DateTime, household$Sub_metering_3, col = "blue")
 
-legend("topright",legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), 
-       col=c("black","red","blue"), cex = 0.4,y.intersp=0.1, lty=1, inset = c(-.35, -.45) ,bty="n")
+# legend("topright",legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
+#        col=c("black","red","blue"), cex = 0.4,y.intersp=0.1, lty=1, inset = c(-.35, -.45) ,bty="n")
+
+legend("topright",legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
+       col=c("black","red","blue"), lty=1, lwd = 3)
 
 plot(household$DateTime, household$Global_reactive_power,
      xlab = "datetime", ylab = "Global_reactive_power", type="l")
 
-dev.copy(png,filename = "plot4.png", width = 480, height = 480)
+
 dev.off()
